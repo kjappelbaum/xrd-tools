@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  ciftools:
+    build: .
+    restart: always
+    environment:
+      - PORT=${PORT}
+    ports:
+      - 127.0.0.1:${PORT}:${PORT}
