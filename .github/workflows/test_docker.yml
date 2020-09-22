@@ -9,4 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Build the Docker image
-        run: pip3 install requests[security] && ./build_docker.sh && ./run_docker.sh && cd test && python3 test_docker.py
+        run: pip3 install requests[security] && ./build_docker.sh
+      - name: start the docker image
+        run: ./run_docker.sh
+      - name: run the test
+        run: cd test && python3 test_docker.py

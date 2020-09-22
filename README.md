@@ -4,6 +4,7 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
 
 ## Implemented methods
 
+- `GET` to `/` shows the `README.md`
 - `POST` to `/api/predictxrd` with `structurefile` data (CIF as string) returns:
   - `x`: with the 2 theta positions of the reflexes
   - `y`: intensity of the reflexes
