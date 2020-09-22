@@ -1,4 +1,10 @@
-# PXRD prediction webservice 
+# CIF tools webservice
 
-REST-API built with flask that takes a `CIF` and returns the X-ray diffraction reflexes. 
-Uses pymatgen to calculate those.
+REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pymatgen&t=brave) functionality.
+
+## Implemented methods
+
+- `POST` to `/api/predictxrd` with `structurefile` data (CIF as string) returns:
+  - `x`: with the 2 theta positions of the reflexes
+  - `y`: intensity of the reflexes
+  - `hkl` array of objects `{hkl: , multiplicity: }`
