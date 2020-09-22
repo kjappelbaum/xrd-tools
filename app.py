@@ -11,7 +11,7 @@ def index():
 
 
 # Todo: potentially also allow to request different light sources
-@app.route("/api/predict/", methods=["POST"])
+@app.route("/api/predictxrd/", methods=["POST"])
 def index(cif):
     if "structurefile" not in request.files:
         abort(400)
@@ -32,7 +32,7 @@ def index(cif):
         hkls = pattern.hkls
 
         return jsonify({"x": x, "y": y, "hkls": hkls,}), 200
-        
+
     except Exception:
         abort(513)
 
