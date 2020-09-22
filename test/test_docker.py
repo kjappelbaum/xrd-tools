@@ -1,9 +1,12 @@
-import requests
+# -*- coding: utf-8 -*-
+from __future__ import absolute_import, print_function
+
 import sys
+
+import requests
 
 with open("xalxuf01.cif", "r") as fh:
     f = fh.read()
-
 
 r = requests.post("http://localhost:8091/api/predictxrd/", data={"structurefile": f})
 keys = r.json().keys()
