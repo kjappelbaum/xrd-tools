@@ -1,5 +1,8 @@
 # CIF tools webservice
 
+![Docker Image Build and Test CI](https://github.com/cheminfo/xrd-tools/workflows/Docker%20Image%20Build%20CI/badge.svg)
+![Python package](https://github.com/cheminfo/xrd-tools/workflows/Python%20package/badge.svg)
+
 REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pymatgen&t=brave) functionality.
 
 ## Implemented methods
