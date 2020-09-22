@@ -1,11 +1,18 @@
 
 FROM python:3.7-slim-buster
 
+COPY install_packages.sh .
+RUN ./install_packages.sh
+
+RUN useradd lsmoler
+
 WORKDIR /home/lsmoler
 
 COPY requirements.txt .
 
 COPY app.py . 
+
+COPY gunicorn_conf.py .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
