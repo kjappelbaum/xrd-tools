@@ -9,7 +9,7 @@ r = requests.post("http://localhost:8091/api/predictxrd/", data={"structurefile"
 keys = r.json().keys()
 
 if "x" in keys:
-    print('PXRD prediction API works')
+    print("PXRD prediction API works")
     sys.exit(0)
 else:
     sys.exit(1)
