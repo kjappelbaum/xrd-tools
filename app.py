@@ -2,7 +2,7 @@
 """Defining the REST API"""
 
 import logging
-
+import os
 import markdown
 import pymatgen
 import pytojcamp
@@ -109,4 +109,4 @@ def predictxrd():
 
 
 if __name__ == "__main__":
-    app.run(debug=False, host="0.0.0.0")
+    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))

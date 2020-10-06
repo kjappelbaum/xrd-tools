@@ -20,4 +20,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 USER lsmoler
 
-CMD gunicorn -b 0.0.0.0:$PORT -c gunicorn_conf.py --log-level debug --capture-output --enable-stdio-inheritance app:app
+CMD gunicorn -t 150 -b 0.0.0.0:$PORT -c gunicorn_conf.py --log-level debug --capture-output --enable-stdio-inheritance app:app
