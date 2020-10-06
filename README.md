@@ -13,3 +13,6 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
   - `x`: with the 2 theta positions of the reflexes
   - `y`: intensity of the reflexes
   - `hkl` array of objects `{hkl: , multiplicity: }`
+
+  if you also provide `jcamp=true` you will receive
+  - `jcamp`: a string of the JCAMP-DX file with the predicted pattern
