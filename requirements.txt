@@ -2,3 +2,4 @@ flask==1.1.2
 pymatgen==2020.9.14
 gunicorn==20.0.4
 markdown==3.2.2
+pytojcamp>0.0.1

@@ -1,21 +1,35 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
-import sys
-
-sys.path.append('..')
+"""Testing basic functionality of the API"""
 import json
+import sys
 
 from app import app
 
-with open('xalxuf01.cif', 'r') as fh:
+sys.path.append("..")
+
+with open("xalxuf01.cif", "r") as fh:
     f = fh.read()
 
 
 def test_pxrd():
-    response = app.test_client().post('/api/predictxrd/', data=dict(structurefile=f))
+    """Test PXRD prediction"""
+    response = app.test_client().post("/api/predictxrd/", data=dict(structurefile=f))
     data = json.loads(response.get_data(as_text=True))
     keys = data.keys()
     assert response.status_code == 200
-    assert 'x' in keys
-    assert 'y' in keys
+    assert "x" in keys
+    assert "y" in keys
+
+
+def test_jcamp():
+    """Test PXRD prediction with JCAMP return"""
+    response = app.test_client().post(
+        "/api/predictxrd/",
+        data=dict(structurefile=f, jcamp="true"),
+    )
+    data = json.loads(response.get_data(as_text=True))
+    keys = data.keys()
+    assert response.status_code == 200
+    assert "x" in keys
+    assert "y" in keys
+    assert "jcamp" in keys
