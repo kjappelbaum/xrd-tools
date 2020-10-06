@@ -1,7 +1,7 @@
-version: "2.2"
+version: "3.3"
 services:
   ciftools:
-    image: ghcr.io/cheminfo-py/xrd-tools:0.0.2
+    image: ghcr.io/cheminfo-py/xrd-tools:latest
     restart: always
     environment:
       - PORT=${PORT}
