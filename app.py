@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Defining the REST API"""
 
+import logging
+
 import markdown
 import pymatgen
 import pytojcamp
@@ -10,6 +12,18 @@ from pymatgen.analysis.diffraction.xrd import XRDCalculator
 from pytojcamp import from_dict
 
 app = Flask(__name__)
+
+
+gunicorn_logger = logging.getLogger("gunicorn.error")
+app.logger.handlers = gunicorn_logger.handlers
+app.logger.setLevel(gunicorn_logger.level)  # pylint:disable=no-member
+
+
+@app.route("/health", methods=["GET"])
+def get_status():
+    """For debugging"""
+    app.logger.info("checking health of application")  # pylint:disable=no-member
+    return jsonify({"status": "UP"}), 200
 
 
 @app.route("/")
