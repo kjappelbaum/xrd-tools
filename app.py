@@ -3,16 +3,18 @@
 
 import logging
 import os
+
 import markdown
 import pymatgen
 import pytojcamp
 from flask import Flask, abort, jsonify, request
+from flask_cors import CORS
 from pymatgen import Structure
 from pymatgen.analysis.diffraction.xrd import XRDCalculator
 from pytojcamp import from_dict
 
 app = Flask(__name__)
-
+CORS(app)
 
 gunicorn_logger = logging.getLogger("gunicorn.error")
 app.logger.handlers = gunicorn_logger.handlers
