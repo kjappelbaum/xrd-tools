@@ -1,7 +1,7 @@
-version: "3.8"
+version: "2.2"
 services:
   ciftools:
-    image: cheminfo/xrd-tools:v0.1
+    image: docker.pkg.github.com/cheminfo-py/xrd-tools/xrd-tools:v0.0.2
     restart: always
     environment:
       - PORT=${PORT}
