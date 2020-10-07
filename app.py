@@ -8,6 +8,7 @@ import markdown
 from flask import Flask, abort, jsonify, request
 from flask_cors import CORS
 from pymatgen import Structure
+from pymatgen.analysis.diffraction.xrd import WAVELENGTHS
 
 from xrd_tools import calculate_pattern
 
@@ -70,6 +71,13 @@ def predictxrd():
         abort(500, "Could not read structure")
 
     wavelength = "CuKa"
+    try:
+        if request.form["wavelength"] in list(WAVELENGTHS.keys()):
+            extension = request.form["extension"]
+        else:
+            abort(400, "This wavelength is not implemented")
+    except Exception:  # pylint:disable=broad-except
+        pass
 
     try:
         output_dict = calculate_pattern(structure, wavelength, return_jcamp)
