@@ -7,7 +7,7 @@ from app import app
 
 sys.path.append("..")
 
-with open("xalxuf01.cif", "r") as fh:
+with open("HKUST-1.cif", "r") as fh:
     f = fh.read()
 
 
