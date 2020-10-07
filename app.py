@@ -5,13 +5,11 @@ import logging
 import os
 
 import markdown
-import pymatgen
-import pytojcamp
 from flask import Flask, abort, jsonify, request
 from flask_cors import CORS
 from pymatgen import Structure
-from pymatgen.analysis.diffraction.xrd import XRDCalculator
-from pytojcamp import from_dict
+
+from xrd_tools import calculate_pattern
 
 app = Flask(__name__)
 CORS(app)
@@ -59,53 +57,25 @@ def predictxrd():
     except Exception:  # pylint:disable=broad-except
         return_jcamp = False
 
+    extension = "cif"
     try:
-        structure = Structure.from_str(filecontent, fmt="cif")
+        if request.form["extension"] in ["cif"]:
+            extension = request.form["extension"]
     except Exception:  # pylint:disable=broad-except
-        abort(500)
+        pass
+
+    try:
+        structure = Structure.from_str(filecontent, fmt=extension)
+    except Exception:  # pylint:disable=broad-except
+        abort(500, "Could not read structure")
 
     wavelength = "CuKa"
 
     try:
-        calculator = XRDCalculator(wavelength=wavelength)
-        pattern = calculator.get_pattern(structure)
-        two_theta = list(pattern.x)
-        intensity = list(pattern.y)
-        hkls = pattern.hkls
-
-        output_dict = {
-            "x": two_theta,
-            "y": intensity,
-            "hkls": hkls,
-        }
-
-        if return_jcamp:
-
-            jcamp = from_dict(
-                {
-                    "x": {
-                        "data": output_dict["x"],
-                        "unit": "°",
-                        "type": "INDEPENDENT",
-                        "name": "2 theta",
-                    },
-                    "y": {
-                        "data": output_dict["y"],
-                        "type": "DEPENDENT",
-                        "unit": "",
-                        "name": "intensity",
-                    },
-                },
-                data_type="Predicted PXRD pattern",
-                origin=f"Pymatgen version {pymatgen.__version__}\
-                     converted to JCAMP with pytojcamp version {pytojcamp.__version__}",
-                meta={"wavelength": wavelength},
-            )
-
-            output_dict["jcamp"] = jcamp
-
+        output_dict = calculate_pattern(structure, wavelength, return_jcamp)
         return jsonify(output_dict), 200
-
+    except TimeoutError:
+        abort(408)
     except Exception:  # pylint:disable=broad-except
         abort(500)
 

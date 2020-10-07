@@ -11,6 +11,7 @@ WORKDIR /home/lsmoler
 COPY requirements.txt .
 
 COPY app.py .
+COPY xrd_tools ./xrd_tools
 
 COPY README.md .
 
