@@ -32,7 +32,6 @@ def test_lattice_predict():
         "latticepattern",
         json={"a": 1, "b": 1, "c": 2, "alpha": 90, "beta": 90, "gamma": 90},
     )
-    print(response.json())
     assert response.status_code == 200
     body = response.json()
     assert "x" in body.keys()

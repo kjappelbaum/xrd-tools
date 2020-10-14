@@ -1,0 +1,160 @@
+#------------------------------------------------------------------------------
+#$Date: 2019-10-10 12:58:52 +0300 (Thu, 10 Oct 2019) $
+#$Revision: 219250 $
+#$URL: file:///home/coder/svn-repositories/cod/cif/2/00/00/2000094.cif $
+#------------------------------------------------------------------------------
+#
+# This file is available in the Crystallography Open Database (COD),
+# http://www.crystallography.net/
+#
+# All data on this site have been placed in the public domain by the
+# contributors.
+#
+data_2000094
+loop_
+_publ_author_name
+'Gimbert, Yves'
+'Robert, Fr\'ed\'eric'
+'Durif, Andr\'e'
+'Averbuch, Marie-Th\'er\`ese'
+'Kann, Nina'
+'Greene, Andrew E.'
+_publ_section_title
+;
+ Synthesis and Characterization of New Binuclear Co(0) Complexes with
+ Diphosphinoamine Ligands. A Potential Approach for Asymmetric
+ Pauson-Khand Reactions
+;
+_journal_coden_ASTM              JOCEAH
+_journal_issue                   10
+_journal_name_full               'The Journal of Organic Chemistry'
+_journal_page_first              3492
+_journal_page_last               3497
+_journal_paper_doi               10.1021/jo982245o
+_journal_volume                  64
+_journal_year                    1999
+_chemical_formula_sum            'C37 H28 Co2 O4 P2'
+_space_group_IT_number           15
+_symmetry_cell_setting           monoclinic
+_symmetry_space_group_name_Hall  '-C 2yc'
+_symmetry_space_group_name_H-M   'C 1 2/c 1'
+_cell_angle_alpha                90
+_cell_angle_beta                 92.87(2)
+_cell_angle_gamma                90
+_cell_formula_units_Z            8
+_cell_length_a                   40.127(6)
+_cell_length_b                   12.434(3)
+_cell_length_c                   14.716(2)
+_cell_volume                     7333.179
+_diffrn_ambient_temperature      ?
+_exptl_crystal_colour            'dark red'
+_exptl_crystal_density_diffrn    1.3
+_refine_ls_R_factor_gt           0.034
+_refine_ls_wR_factor_gt          0.034
+_cod_depositor_comments
+;
+ Updated bibliographic information.
+
+ Antanas Vaitkus,
+ 2019-10-10
+;
+_cod_original_sg_symbol_H-M      'C 2/c'
+_cod_database_code               2000094
+loop_
+_symmetry_equiv_pos_site_id
+_symmetry_equiv_pos_as_xyz
+1 x,y,z
+2 -x,y,1/2-z
+3 1/2+x,1/2+y,z
+4 1/2-x,1/2+y,1/2-z
+5 -x,-y,-z
+6 x,-y,-1/2+z
+7 -1/2-x,-1/2-y,-z
+8 -1/2+x,-1/2-y,-1/2+z
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Co1 Co 0.16705(1) 0.21366(5) 0.30227(4)
+Co2 Co 0.10524(1) 0.20977(5) 0.29355(4)
+P1 P 0.17400(3) 0.1272(1) 0.43421(8)
+P2 P 0.09895(3) 0.1149(1) 0.41992(8)
+O1 O 0.2289(1) 0.1595(4) 0.2199(3)
+O2 O 0.1783(1) 0.4428(3) 0.3275(4)
+O3 O 0.0934(1) 0.4390(3) 0.3185(3)
+O4 O 0.0453(1) 0.1578(4) 0.1848(3)
+C1 C 0.1376(1) 0.0416(4) 0.4484(3)
+C2 C 0.1796(1) 0.2017(4) 0.5405(3)
+C3 C 0.1678(1) 0.1664(4) 0.6215(3)
+C4 C 0.1723(1) 0.2241(5) 0.6997(3)
+C5 C 0.1900(2) 0.3174(5) 0.6995(4)
+C6 C 0.2028(2) 0.3509(5) 0.6205(4)
+C7 C 0.1974(2) 0.2957(5) 0.5413(3)
+C8 C 0.2077(1) 0.0271(4) 0.4407(3)
+C9 C 0.2299(1) 0.0145(5) 0.5169(4)
+C10 C 0.2553(1) -0.0625(5) 0.5147(4)
+C11 C 0.2579(2) -0.1238(5) 0.4403(5)
+C12 C 0.2369(1) -0.1130(5) 0.3661(5)
+C13 C 0.2122(1) -0.0372(4) 0.3663(4)
+C14 C 0.0906(1) 0.1790(4) 0.5279(3)
+C15 C 0.0799(1) 0.1198(4) 0.6010(3)
+C16 C 0.0754(1) 0.1685(6) 0.6838(3)
+C17 C 0.0807(2) 0.2758(6) 0.6947(4)
+C18 C 0.0920(2) 0.3366(5) 0.6251(4)
+C19 C 0.0966(2) 0.2886(5) 0.5409(3)
+C20 C 0.0673(1) 0.0084(4) 0.4140(3)
+C21 C 0.0351(1) 0.0370(4) 0.3896(4)
+C22 C 0.0101(1) -0.0363(5) 0.3847(4)
+C23 C 0.0168(1) -0.1436(5) 0.4033(4)
+C24 C 0.0487(1) -0.1739(4) 0.4269(4)
+C25 C 0.0742(1) -0.0980(4) 0.4330(3)
+C26 C 0.1368(1) 0.1128(4) 0.2383(3)
+C27 C 0.1357(1) 0.2078(4) 0.1953(3)
+C28 C 0.1367(1) 0.2566(4) 0.1044(3)
+C29 C 0.1596(1) 0.2193(4) 0.0432(3)
+C30 C 0.1604(1) 0.2636(4) -0.0422(3)
+C31 C 0.1390(2) 0.3452(5) -0.0679(3)
+C32 C 0.1166(2) 0.3834(5) -0.0094(4)
+C33 C 0.1154(1) 0.3384(4) 0.0779(3)
+C34 C 0.2050(1) 0.1812(4) 0.2539(3)
+C35 C 0.1740(1) 0.3537(5) 0.3204(4)
+C36 C 0.0976(1) 0.3494(4) 0.3129(3)
+C37 C 0.0682(1) 0.1772(4) 0.2302(3)
+H1 H 0.13650 0.01750 0.50590
+H2 H 0.13730 -0.01790 0.40450
+H3 H 0.15350 0.09450 0.62250
+H4 H 0.16680 0.19580 0.75960
+H5 H 0.19530 0.34820 0.76220
+H6 H 0.21640 0.41520 0.61780
+H7 H 0.20620 0.31740 0.48560
+H8 H 0.22700 0.06780 0.56380
+H9 H 0.26690 -0.07200 0.57100
+H10 H 0.27720 -0.17950 0.43910
+H11 H 0.23870 -0.14880 0.30500
+H12 H 0.19510 -0.03480 0.31240
+H13 H 0.07060 0.04950 0.59180
+H14 H 0.06640 0.13670 0.73030
+H15 H 0.08200 0.30660 0.75480
+H16 H 0.09840 0.42610 0.62640
+H17 H 0.10560 0.32770 0.50110
+H18 H 0.02770 0.11780 0.38280
+H19 H -0.00990 -0.03200 0.36560
+H20 H -0.00210 -0.19080 0.39980
+H21 H 0.05580 -0.23550 0.43600
+H22 H 0.09680 -0.11870 0.44710
+H23 H 0.13810 0.03670 0.22430
+H24 H 0.17650 0.15870 0.05790
+H25 H 0.17960 0.23280 -0.08580
+H26 H 0.13710 0.37270 -0.12290
+H27 H 0.09760 0.44570 -0.02830
+H28 H 0.09580 0.37450 0.11580
+loop_
+_atom_type_symbol
+_atom_type_radius_bond
+C 0.68
+H 0.23
+Co 1.33
+O 0.68
+P 1.05

@@ -17,16 +17,15 @@ else:
     sys.exit(1)
 
 
-with open(os.path.join(THIS_DIR, "xalxuf01.cif"), "r") as fh:
+with open(os.path.join(THIS_DIR, "2000094.cif"), "r") as fh:
     f = fh.read()
 
 r = requests.post(
-    "http://localhost:8091/api/predictxrd",
-    data=json.dumps({"fileContent": f}),
-    headers={"accept": "application/json", "Content-Type": "application/json"},
+    "http://localhost:8091/predictxrd",
+    data=json.dumps({"fileContent": f})
 )
-keys = r.json().keys()
 
+keys = r.json().keys()
 if "x" in keys:
     print("PXRD prediction API works")
     sys.exit(0)
