@@ -1,0 +1,17 @@
+{
+  "template": "https://github.com/cheminfo-py/cheminfo-webservice-cookiecutter",
+  "commit": "3e51f8f34c19dbb4440dedee72b54768f32ee064",
+  "context": {
+    "cookiecutter": {
+      "project_name": "xrd-tools",
+      "repo_name": "xrd-tools",
+      "first_module_name": "xrd_tools",
+      "author_name": "Kevin M. Jablonka",
+      "author_email": "kevin.jablonka@epfl.ch",
+      "description": "REST-API serving XRD tools",
+      "_cheminfo_cc_version": 0.1,
+      "_template": "https://github.com/cheminfo-py/cheminfo-webservice-cookiecutter"
+    }
+  },
+  "directory": null
+}
