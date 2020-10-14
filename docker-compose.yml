@@ -6,4 +6,4 @@ services:
     environment:
       - PORT=${PORT}
     ports:
-      - ${PORT}:${PORT}
+      - 127.0.0.1:${PORT}:${PORT}
