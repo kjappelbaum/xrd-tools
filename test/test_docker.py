@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
+import json
+import os
 import sys
 
 import requests
-import os
-import json
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -21,8 +21,7 @@ with open(os.path.join(THIS_DIR, "2000094.cif"), "r") as fh:
     f = fh.read()
 
 r = requests.post(
-    "http://localhost:8091/predictxrd",
-    data=json.dumps({"fileContent": f})
+    "http://localhost:8091/predictxrd", data=json.dumps({"fileContent": f})
 )
 
 keys = r.json().keys()

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
-from fastapi.testclient import TestClient
 import os
+
+from fastapi.testclient import TestClient
+
 from xrd_tools import __version__, app
 
 THIS_DIR = os.path.dirname(os.path.realpath(__file__))
