@@ -1,35 +1,42 @@
 # -*- coding: utf-8 -*-
-"""Testing basic functionality of the API"""
-import json
-import sys
+import os
 
-from app import app
+from fastapi.testclient import TestClient
 
-sys.path.append("..")
+from xrd_tools import __version__, app
 
-with open("HKUST-1.cif", "r") as fh:
+THIS_DIR = os.path.dirname(os.path.realpath(__file__))
+
+
+client = TestClient(app)
+
+with open(os.path.join(THIS_DIR, "xalxuf01.cif"), "r") as fh:
     f = fh.read()
 
 
-def test_pxrd():
-    """Test PXRD prediction"""
-    response = app.test_client().post("/api/predictxrd/", data=dict(structurefile=f))
-    data = json.loads(response.get_data(as_text=True))
-    keys = data.keys()
+def test_read_main():
+    response = client.get("/version")
     assert response.status_code == 200
-    assert "x" in keys
-    assert "y" in keys
+    assert response.json() == {"version": __version__}
 
 
-def test_jcamp():
-    """Test PXRD prediction with JCAMP return"""
-    response = app.test_client().post(
-        "/api/predictxrd/",
-        data=dict(structurefile=f, jcamp="true"),
+def test_predict():
+    response = client.post("/predictxrd", json={"fileContent": f})
+    assert response.status_code == 200
+    body = response.json()
+    assert "x" in body.keys()
+    assert "y" in body.keys()
+    assert "api_version" in body.keys()
+
+
+def test_lattice_predict():
+    response = client.post(
+        "latticepattern",
+        json={"a": 1, "b": 1, "c": 2, "alpha": 90, "beta": 90, "gamma": 90},
     )
-    data = json.loads(response.get_data(as_text=True))
-    keys = data.keys()
     assert response.status_code == 200
-    assert "x" in keys
-    assert "y" in keys
-    assert "jcamp" in keys
+    body = response.json()
+    assert "x" in body.keys()
+    assert len(body["x"]) == 1
+    assert "y" in body.keys()
+    assert "api_version" in body.keys()

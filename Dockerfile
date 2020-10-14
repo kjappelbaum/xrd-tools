@@ -1,24 +1,19 @@
 
-FROM python:3.7-slim-buster
+FROM python:3.8-slim-buster
 
 COPY install_packages.sh .
 RUN ./install_packages.sh
 
-RUN useradd lsmoler
+RUN useradd cheminfo
 
-WORKDIR /home/lsmoler
+WORKDIR /home/cheminfo
 
 COPY requirements.txt .
 
-COPY app.py .
 COPY xrd_tools ./xrd_tools
 
 COPY README.md .
 
-COPY gunicorn_conf.py .
-
 RUN pip install --no-cache-dir -r requirements.txt
 
-USER lsmoler
-
-CMD gunicorn -t 150 -b 0.0.0.0:$PORT -c gunicorn_conf.py --log-level debug --capture-output --enable-stdio-inheritance app:app
+CMD gunicorn -w 2 --backlog 16 xrd_tools.xrd_tools:app -b 0.0.0.0:$PORT -k uvicorn.workers.UvicornWorker
