@@ -18,3 +18,5 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
   if you also provide `jcamp=true` you will receive
 
   - `jcamp`: a string of the JCAMP-DX file with the predicted pattern
+
+  you can also specify a `wavelength` which must be one of the following strings: CuKa, CuKa2, CuKa1, CuKb1, MoKa, MoKa2, MoKa1, MoKb1, CrKa, CrKa2, CrKa1, CrKb1, FeKa, FeKa2, FeKa1, FeKb1, CoKa, CoKa2, CoKa1, CoKb1, AgKa, AgKa2, AgKa1, AgKb1.
