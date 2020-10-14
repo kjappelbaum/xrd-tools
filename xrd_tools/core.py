@@ -10,7 +10,7 @@ from pytojcamp import from_dict
 from . import __version__
 
 
-@func_set_timeout(40)
+@func_set_timeout(60)
 def calculate_pattern(
     filecontent, extension="cif", wavelength="CuKa", return_jcamp=False
 ):
@@ -58,7 +58,7 @@ def calculate_pattern(
     return output_dict
 
 
-@func_set_timeout(40)
+@func_set_timeout(60)
 def calculate_laue_pattern(
     a, b, c, alpha, beta, gamma, wavelength="CuKa", return_jcamp=False
 ):
