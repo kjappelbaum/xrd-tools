@@ -13,5 +13,7 @@ services:
     build: ./mongo-seed
   mongodb-seed:
     image: mongodb
+    environment:
+      - DUMPDIR=${DUMPDIR}
     links:
       - mongodb
