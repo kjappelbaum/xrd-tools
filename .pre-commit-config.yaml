@@ -50,12 +50,12 @@ repos:
         language: system
         types: [python]
 
-      - id: isort
-        name: isort
-        language: system
-        exclude: versioneer.py
-        types: [python]
-        entry: isort
+      # - id: isort
+      #   name: isort
+      #   language: system
+      #   exclude: versioneer.py
+      #   types: [python]
+      #   entry: isort
 
       - id: prospector
         language: system

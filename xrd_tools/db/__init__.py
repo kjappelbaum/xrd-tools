@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """Utilities of handling the database"""
-# Motor presents a coroutine-based API for non-blocking access
-# to MongoDB from Tornado or asyncio.
 from motor.motor_asyncio import AsyncIOMotorClient
 
+# Motor presents a coroutine-based API for non-blocking access
+# to MongoDB from Tornado or asyncio.
 from ..config import MAX_CONNECTIONS_COUNT, MIN_CONNECTIONS_COUNT, MONGODB_URL
 
 

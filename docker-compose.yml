@@ -7,5 +7,11 @@ services:
       - PORT=${PORT}
     ports:
       - 127.0.0.1:${PORT}:${PORT}
-  db:
+    links:
+      - mongodb
+  mongodb:
+    build: ./mongo-seed
+  mongodb-seed:
     image: mongodb
+    links:
+      - mongodb
