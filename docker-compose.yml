@@ -7,3 +7,5 @@ services:
       - PORT=${PORT}
     ports:
       - 127.0.0.1:${PORT}:${PORT}
+  db:
+    image: mongodb
