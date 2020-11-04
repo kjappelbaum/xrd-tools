@@ -14,9 +14,9 @@ ALLOWED_HOSTS = CommaSeparatedStrings(os.getenv("ALLOWED_HOSTS", ""))
 
 MONGODB_URL = os.getenv("MONGODB_URL", "")  # deploying without docker-compose
 if not MONGODB_URL:
-    MONGO_HOST = os.getenv("MONGO_HOST", "localhost")
+    MONGO_HOST = os.getenv("MONGO_HOST", "mongodb")
     MONGO_PORT = int(os.getenv("MONGO_PORT", "27017"))
-    MONGO_DB = os.getenv("MONGO_DB", "fastapi")
+    MONGO_DB = os.getenv("MONGO_DB", "xrd-patterns")
 
     MONGODB_URL = f"mongodb://{MONGO_HOST}:{MONGO_PORT}/{MONGO_DB}"
 

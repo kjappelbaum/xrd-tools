@@ -106,7 +106,7 @@ def predict_laue(parameters: LatticeInput):
         raise HTTPException(status_code=400, detail="XRD prediction failed")
 
 
-@app.get("/getPattern", response_model=DataBaseEntry)
+@app.get("/getpattern", response_model=DataBaseEntry)
 async def retrieve_pattern(  # pylint:disable=invalid-name
     dbName: str, db: AsyncIOMotorClient = Depends(get_database)
 ):

@@ -1,16 +1,16 @@
 version: "3.3"
 services:
   xrd-predict:
-    image: ghcr.io/cheminfo-py/xrd-tools:latest
+    build: .
     restart: always
     environment:
       - PORT=${PORT}
     env_file:
       - .env
     depends_on:
-    ports: -${PORT}:${PORT}
-    links:
       - mongodb
+    ports:
+      - ${PORT}:${PORT}
   mongodb:
     image: mongo
     volumes:
