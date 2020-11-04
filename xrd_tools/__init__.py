@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# pylint:disable=cyclic-import
 """
 REST-API serving XRD prediction tools
 """
@@ -7,10 +8,9 @@ REST-API serving XRD prediction tools
 from ._version import get_versions
 
 versions = get_versions()
-__version__ = versions["version"]
+__version__: str = versions["version"]
 __git_revision__ = versions["full-revisionid"]
 del get_versions, versions
 
-
 # Add imports here
-from .xrd_tools import app
+from .xrd_app import app  # pylint:disable=wrong-import-position

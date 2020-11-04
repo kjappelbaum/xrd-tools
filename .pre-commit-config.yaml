@@ -38,7 +38,7 @@ repos:
     rev: "" # Use the sha / tag you want to point at
     hooks:
       - id: mypy
-        exclude: versioneer.py
+        exclude: versioneer.py|xrd_tools/_version.pyG
 
   - repo: local
     hooks:
@@ -50,16 +50,16 @@ repos:
         language: system
         types: [python]
 
-      - id: isort
-        name: isort
-        language: system
-        exclude: versioneer.py
-        types: [python]
-        entry: isort
+      # - id: isort
+      #   name: isort
+      #   language: system
+      #   exclude: versioneer.py
+      #   types: [python]
+      #   entry: isort
 
       - id: prospector
         language: system
         types: [file, python]
-        exclude: versioneer.py
+        exclude: versioneer.py,xrd_tools/_version.py
         name: prospector
         entry: prospector
