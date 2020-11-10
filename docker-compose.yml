@@ -10,7 +10,7 @@ services:
     depends_on:
       - mongodb
     ports: 
-      -${PORT}:${PORT}
+      - ${PORT}:${PORT}
     links:
       - mongodb
   mongodb:
