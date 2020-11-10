@@ -8,7 +8,9 @@ services:
     env_file:
       - .env
     depends_on:
-    ports: -${PORT}:${PORT}
+      - mongodb
+    ports: 
+      -${PORT}:${PORT}
     links:
       - mongodb
   mongodb:
