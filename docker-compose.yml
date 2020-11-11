@@ -9,11 +9,14 @@ services:
       - .env
     depends_on:
       - mongodb
-    ports: 
+    ports:
       - ${PORT}:${PORT}
     links:
       - mongodb
   mongodb:
     image: mongo
+    mem_limit: 30000m
+    memswap_limit: 30000m
     volumes:
+      - ./mongo-data:/data/db
       - ./mongo-seed/dump:/dump

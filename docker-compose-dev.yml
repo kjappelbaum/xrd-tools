@@ -13,5 +13,8 @@ services:
       - ${PORT}:${PORT}
   mongodb:
     image: mongo
+    mem_limit: 30000m
+    memswap_limit: 30000m
     volumes:
+      - ./mongo-data:/data/db
       - ./mongo-seed/dump:/dump
