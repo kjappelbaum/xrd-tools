@@ -5,7 +5,22 @@
 
 REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pymatgen&t=brave) functionality.
 
+The app used file-based caching.
+
 ## How to get it up and running
+
+### Settings
+
+Before you can run the image there are some settings you have to define. To get started you can `cp .env.sample .env`.
+
+- `MONGO_HOST`=127.0.0.1 Host for the MongoDB for pattern lookup (usually no need to change)
+- `MONGO_PORT`=27017 Port for MongoDB (usually no need to change)
+- `MONGO_DB`=xrd-patterns name of MongoDB (do not change)
+- `PORT`=8100 port used to expose the app
+- `WORKERS`=2 workers used to run the app (one processor per worker)
+- `CONCURRENCY_LIMIT`=2 maximum number of concurrent connections
+
+### Procedure
 
 0. Make sure that you have the `bson` to seed the database in the `mongo-seed/dump/xrd-patterns` directory. You can download the file from [Dropbox](https://www.dropbox.com/s/ssu9o1o6a7xdr7o/patterns.bson?dl=0)
 1. Start the docker-compose with `docker-compose up -d`
@@ -17,7 +32,6 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
 4. If you visit the documentation at `localhost:$PORT` you can test if the lookup works
 
 <a href="url"><img src="_static/test_api.png" align="center" width="460" ></a>
-
 
 ## Implemented methods
 
@@ -34,7 +48,9 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
   - `jcamp`: a string of the JCAMP-DX file with the predicted pattern
 
   you can also specify a `wavelength` which must be one of the following strings: CuKa, CuKa2, CuKa1, CuKb1, MoKa, MoKa2, MoKa1, MoKb1, CrKa, CrKa2, CrKa1, CrKb1, FeKa, FeKa2, FeKa1, FeKb1, CoKa, CoKa2, CoKa1, CoKb1, AgKa, AgKa2, AgKa1, AgKb1.
+
 - `POST` to `/latticepattern` with a request body of the following form
+
 ```
 {
   "a": 0,
@@ -47,8 +63,11 @@ REST-API built with flask that exposes [pymatgen](https://duckduckgo.com/?q=pyma
   "jcamp": false
 }
 ```
+
 returns an answer as `/predictxrd`
+
 - `GET` to `/getpattern?dbName=` returns and object of the following form
+
 ```
 {
   "x": [
