@@ -13,7 +13,8 @@ COPY requirements.txt .
 COPY xrd_tools ./xrd_tools
 
 COPY README.md .
+COPY logging_config.ini .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-CMD gunicorn -w 2 --backlog 16 xrd_tools.xrd_app:app -b 0.0.0.0:$PORT -k uvicorn.workers.UvicornWorker
+CMD uvicorn xrd_tools.xrd_app:app --host=0.0.0.0 --port=$PORT --workers=$WORKERS --loop="uvloop" --http="httptools" --log-config=logging_config.ini --limit-concurrency=$CONCURRENCY_LIMIT
