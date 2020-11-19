@@ -72,8 +72,8 @@ def calculate_pattern(
 
         output_dict["jcamp"] = jcamp
 
-        logger.debug("Trying to set cache")
-        pattern_cache.set(input_hash, output_dict)
+    logger.debug("Trying to set cache")
+    pattern_cache.set(input_hash, output_dict)
 
     return output_dict
 
@@ -122,46 +122,48 @@ def calculate_laue_pattern(  # pylint:disable=invalid-name,too-many-arguments, t
     if response is not None:
         logger.info("Returning from cache")
         return response
+    try:
+        lattice = Lattice.from_parameters(a, b, c, alpha, beta, gamma)
+        structure = Structure(lattice=lattice, species=[], coords=[])
+        calculator = LatticeXRDCalculator(wavelength=wavelength)
+        pattern = calculator.get_pattern(structure)
 
-    lattice = Lattice.from_parameters(a, b, c, alpha, beta, gamma)
-    structure = Structure(lattice=lattice, species=[], coords=[])
-    calculator = LatticeXRDCalculator(wavelength=wavelength)
-    pattern = calculator.get_pattern(structure)
+        output_dict = {
+            "x": list(pattern.x),
+            "y": list(pattern.y),
+            "hkls": pattern.hkls,
+            "apiVersion": __version__,
+        }
 
-    output_dict = {
-        "x": list(pattern.x),
-        "y": list(pattern.y),
-        "hkls": pattern.hkls,
-        "apiVersion": __version__,
-    }
+        if return_jcamp:
 
-    if return_jcamp:
-
-        jcamp = from_dict(
-            {
-                "x": {
-                    "data": output_dict["x"],
-                    "unit": "°",
-                    "type": "INDEPENDENT",
-                    "name": "2 theta",
+            jcamp = from_dict(
+                {
+                    "x": {
+                        "data": output_dict["x"],
+                        "unit": "°",
+                        "type": "INDEPENDENT",
+                        "name": "2 theta",
+                    },
+                    "y": {
+                        "data": output_dict["y"],
+                        "type": "DEPENDENT",
+                        "unit": "",
+                        "name": "intensity",
+                    },
                 },
-                "y": {
-                    "data": output_dict["y"],
-                    "type": "DEPENDENT",
-                    "unit": "",
-                    "name": "intensity",
-                },
-            },
-            data_type="Predicted PXRD pattern",
-            origin=f"Pymatgen version {pymatgen.__version__}\
-                        converted to JCAMP with pytojcamp version\
-                             {pytojcamp.__version__}",
-            meta={"wavelength": wavelength},
-        )
+                data_type="Predicted PXRD pattern",
+                origin=f"Pymatgen version {pymatgen.__version__}\
+                            converted to JCAMP with pytojcamp version\
+                                {pytojcamp.__version__}",
+                meta={"wavelength": wavelength},
+            )
 
-        output_dict["jcamp"] = jcamp
+            output_dict["jcamp"] = jcamp
 
         logger.debug("Trying to set cache")
         laue_cache.set(input_hash, output_dict)
 
+    except Exception as e:
+        raise ValueError("Some error occured {}".format(e)) from e
     return output_dict

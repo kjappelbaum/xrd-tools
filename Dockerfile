@@ -13,6 +13,7 @@ COPY requirements.txt .
 COPY xrd_tools ./xrd_tools
 
 COPY README.md .
+COPY logging_config.ini .
 
 RUN pip install --no-cache-dir -r requirements.txt
 
