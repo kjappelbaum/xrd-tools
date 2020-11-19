@@ -4,13 +4,7 @@
 REST-API serving XRD prediction tools
 """
 
-# Handle versioneer
-from ._version import get_versions
-
-versions = get_versions()
-__version__: str = versions["version"]
-__git_revision__ = versions["full-revisionid"]
-del get_versions, versions
+__version__: str = "0.0.5"
 
 # Add imports here
 from .xrd_app import app  # pylint:disable=wrong-import-position
